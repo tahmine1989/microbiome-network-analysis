@@ -1,0 +1,87 @@
+```r
+# Alpha Diversity Visualization
+# Shannon and Simpson diversity analysis in R
+
+# Load required library
+library(ggplot2)
+
+# --------------------------------------------------
+# 1. Read Shannon diversity metadata
+# --------------------------------------------------
+
+shannon_metadata <- read.csv(
+  "vegan-shannon-metadata.csv",
+  header = TRUE,
+  row.names = 1
+)
+
+# --------------------------------------------------
+# 2. Shannon diversity visualization
+# --------------------------------------------------
+
+png(
+  "shannon_violin_boxplot.png",
+  width = 5000,
+  height = 5000,
+  res = 300
+)
+
+ggplot(
+  shannon_metadata,
+  aes(x = disease, y = Shannon, fill = disease)
+) +
+  geom_violin(trim = FALSE, alpha = 0.6) +
+  geom_boxplot(
+    width = 0.1,
+    outlier.shape = NA,
+    alpha = 0.8
+  ) +
+  theme_minimal() +
+  labs(
+    title = "Alpha Diversity (Shannon Index)",
+    x = "Group",
+    y = "Shannon Index"
+  )
+
+dev.off()
+
+# --------------------------------------------------
+# 3. Read Simpson diversity metadata
+# --------------------------------------------------
+
+simpson_metadata <- read.csv(
+  "vegan-simpson-metadata.csv",
+  header = TRUE,
+  row.names = 1
+)
+
+# --------------------------------------------------
+# 4. Simpson diversity visualization
+# --------------------------------------------------
+
+png(
+  "simpson_violin_boxplot.png",
+  width = 5000,
+  height = 5000,
+  res = 300
+)
+
+ggplot(
+  simpson_metadata,
+  aes(x = disease, y = simpson, fill = disease)
+) +
+  geom_violin(trim = FALSE, alpha = 0.6) +
+  geom_boxplot(
+    width = 0.1,
+    outlier.shape = NA,
+    alpha = 0.8
+  ) +
+  theme_minimal() +
+  labs(
+    title = "Alpha Diversity (Simpson Index)",
+    x = "Group",
+    y = "Simpson Index"
+  )
+
+dev.off()
+```
