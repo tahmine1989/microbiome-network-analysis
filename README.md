@@ -13,6 +13,7 @@ The workflow integrates:
 - Hub pathway identification using graph theory
 
 **Analytical workflow**
+
 FASTQ → Quality control → HUMAnN3 → MetaCyc pathways → CLR transformation → PERMANOVA → Spearman correlation network → Centrality analysis
 
 **Methods and tools**
